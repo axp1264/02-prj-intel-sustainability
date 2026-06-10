@@ -1,1 +1,135 @@
-/* Add your CSS here */
+:root {
+  --intel-blue: #0068B5;
+  --deep-blue: #000814;
+  --text-light: #F4F4F4;
+  --text-dark: #111111;
+  --font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--deep-blue);
+  color: var(--text-light);
+  font-family: var(--font-stack);
+  line-height: 1.6;
+}
+
+header {
+  min-height: 40vh;
+  background: linear-gradient(180deg, var(--deep-blue) 0%, #15213b 100%);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100%;
+  padding: 3rem 1.5rem;
+}
+
+.hero-container img {
+  max-width: 160px;
+  width: 100%;
+  height: auto;
+  padding-bottom: 1.5rem;
+}
+
+header h1 {
+  color: var(--text-light);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+header p {
+  color: rgba(244, 244, 244, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-block: 3rem;
+  gap: 1.5rem;
+}
+
+.milestone-card {
+  flex: 0 0 350px;
+  width: 350px;
+  margin-inline: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.card-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.milestone-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 12px 24px rgba(0, 104, 181, 0.3);
+}
+
+.milestone-card:hover .card-details {
+  max-height: 200px;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .timeline-container {
+    flex-direction: column;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    padding-inline: 1rem;
+    margin-inline: -1rem;
+  }
+
+  .milestone-card {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
